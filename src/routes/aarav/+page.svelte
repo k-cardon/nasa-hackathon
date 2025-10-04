@@ -2,7 +2,8 @@
   import { fly, fade } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
   import { onMount } from "svelte";
-  import { DropdownHeader } from "flowbite-svelte";
+  import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader, DropdownGroup } from "flowbite-svelte";
+  import { ChevronDownOutline } from "flowbite-svelte-icons";
 
   let showPopup = true;
   let selectedWeather = null;
@@ -134,15 +135,15 @@
     </button>
 
     <div class="location">
-      Current location:
-    <DropdownHeader>
+    <Button>Dropdown button<ChevronDownOutline class="ms-2 h-6 w-6 text-white dark:text-white" /></Button>
+      <DropdownHeader>
         <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
         <span class="block truncate text-sm font-medium">name@flowbite.com</span>
-    </DropdownHeader>
-      <select>
-        <option>Gothenburg</option>
-        <option>Coming soon...</option>
-      </select>
+      </DropdownHeader>
+      <DropdownGroup>
+        <DropdownItem>Gothenburg</DropdownItem>
+        <DropdownItem>Coming soon...</DropdownItem>
+      </DropdownGroup>
     </div>
   </div>
   </div>

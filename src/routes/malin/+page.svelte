@@ -76,6 +76,17 @@
       temp: 16,
       rainChance: 40,
       wind: 6.3
+    },
+    {
+      id: 6,
+      name: 'Hemma hos Kim',
+      type: 'Parks',
+      lat: 57.9837,
+      lon: 11.9988,
+      sun: 99,
+      temp: 30,
+      rainChance: 1,
+      wind: 1.1
     }
   ];
 

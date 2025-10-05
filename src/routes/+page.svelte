@@ -21,9 +21,8 @@
 		<div
 			class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg"
 		>
-			<p class="mr-30 text-right">our mission</p>
 			<div class="mx-30 mb-5 rounded-sm border-2 border-solid border-black">
-				<h1 class="flex justify-center pt-3 text-center text-3xl">Welcome</h1>
+				<h1 class="flex justify-center p-3 text-center text-3xl">Welcome</h1>
 				<form method="POST" class="flex flex-col gap-3">
 					<p class="mx-5">What weather are you looking for today?</p>
 					<div class="flex flex-row justify-center">
@@ -61,16 +60,11 @@
 
 					<div>
 						<button
-							class="m-4 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 p-2 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
+							class="m-4 pb-4 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 p-2 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
 							type="submit"
 						>
 							Show locations
 						</button>
-					</div>
-
-					<div>
-						<span class="p-8 md:p-0">Current location: </span>
-						<input name="location" class="m-2" bind:value={location} />
 					</div>
 				</form>
 			</div>

@@ -1,9 +1,14 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "flowbite/dist/flowbite.css";
 
 body {
 	font-family: 'Rubik';
-	font-weight: bolder;
+	font-weight: normal;
 	height: 100vh;
 }

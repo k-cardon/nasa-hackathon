@@ -1,4 +1,6 @@
 <script>
+	import { Progressbar } from "flowbite-svelte";
+
 	let location = $state('Sweden');
 	let weatherOptions = [
 		{ id: 1, text: 'Sunny' },
@@ -90,6 +92,7 @@
 		</div>   
     </div>
     {:else}
+	<Progressbar labelOutside="Loading... ~30 sec"/>
          <p>Best match</p>
             <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">
             </div>

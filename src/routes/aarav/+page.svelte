@@ -7,31 +7,37 @@
   import { ButtonToggleGroup, ButtonToggle } from "flowbite-svelte";
 
   let weather = ""; // track selected option
+  let selected = "Select a place...";
 
   function handleSingleSelect(value: string | null) {
     weather = value;
     console.log("Weather:", value);
-    
+  }
+
+  function choose(option) {
+    selected = option;
   }
 </script>
 
 <style>
   .text {
     margin: auto;
-    padding-bottom: 5%;
+    padding-bottom: 1%;
     font-family: "Rubik";
-    font-weight: bolder;
+    font-weight: bold;
     font-size: larger;
+    text-align: center;
   }
 
-  .card {
-    padding: 50px, 50px, 50px, 50px;
+  .buttons {
     margin: auto;
+    align-self: center;
+
   }
 
   .clearup {
     display: block;
-    clear:both;
+    clear: both;
   }
 
 </style>
@@ -41,44 +47,52 @@
   border
   dismissable
   transition={blur}
-  params={{duration:500,easing:cubicInOut}}
+  params={{duration:200,easing:cubicInOut}}
 >
   {#snippet icon()}
     <InfoCircleSolid class="h-5 w-5" />
   {/snippet}
-  Under maintenance! This is just a demo of "PlanMyWeather"
+  Under maintenance! This is just a demo of PlanMyWeather
 </Alert>
 
-<Card size="lg" class="">
-  <h5 class="text">What weather are you looking for today?</h5>
+<Card size="xl" class="p-10 h-max-100 w-xl mx-auto" color="primary-50">
+  <h5 class="text">Welcome to PlanMy Weather!<br></h5>
 
   <div class="card">
   
   <!-- Weather buttons -->
+
+  <h4><br>Choose the desirable weather</h4>
+
   <form method="POST">
     <input type="hidden" name="chosenWeather" bind:value={weather} />
 
-    <ButtonToggleGroup onSelect={handleSingleSelect}>
+    <ButtonToggleGroup onSelect={handleSingleSelect} class="buttons">
       <ButtonToggle color="yellow" value="Sunny" selected={weather === "Sunny"}>Sunny</ButtonToggle>
       <ButtonToggle color="sky" value="Rainy" selected={weather === "Rainy"}>Rainy</ButtonToggle>
       <ButtonToggle color="indigo" value="Cloudy" selected={weather === "Cloudy"}>Cloudy</ButtonToggle>
     </ButtonToggleGroup>
 
-    <Button class="button">Location</Button>
+    <h4><br>Where are you?</h4>
+
+    <Button>Location</Button>
 
     <Dropdown>
+
       <DropdownHeader>
         <span class="block truncate text-sm font-medium">More locations coming soon!</span>
       </DropdownHeader>
       
       <DropdownGroup>
-        <DropdownItem>Gothenburg</DropdownItem>
-        <DropdownItem>Stockholm</DropdownItem>
-        <DropdownItem>Malmö</DropdownItem>
+        <DropdownItem onclick={selected === "Gothenburg"}>Gothenburg</DropdownItem>
+        <DropdownItem onclick={selected === "Malmo"}>Stockholm</DropdownItem>
+        <DropdownItem onclick={selected == "Stockholm"}>Malmö</DropdownItem>
       </DropdownGroup>
+
     </Dropdown>
 
-    <Button type="submit" color="blue" class="">Show locations</Button>
+    <p><br></p>
+    <Button type="submit" color="blue" class="button">Show weather</Button>
 
   </form>
   </div>

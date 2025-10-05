@@ -1,17 +1,24 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import { ButtonToggle, ButtonToggleGroup } from 'flowbite-svelte';
 
 	let location = 'Stockholm';
 	let weatherOptions = [
-		{ id: 1, text: 'Sunny' },
-		{ id: 2, text: 'Cloudy' },
-		{ id: 3, text: 'Rainy' }
+		{ id: 1, text: 'Sunny', color: "yellow"},
+		{ id: 2, text: 'Cloudy', color: "blue" },
+		{ id: 3, text: 'Rainy', color: "indigo" }
 	];
 	let preferredWeather = $state('');
+	let weather = "";
 
 	let { form }: PageProps = $props();
 	//let placesOfInterest = $state('');
 	//let date = $state('');
+
+	function handleSingleSelect(value: string | null) {
+		weather = value;
+		console.log("Weather:", value);
+  }
 </script>
 
 {#if !form?.success}
@@ -27,13 +34,18 @@
 					<div class="flex flex-row justify-center">
 						{#each weatherOptions as weather (weather.id)}
 							<div class="flex flex-row">
-								<input type="checkbox" id={weather.text} name={weather.text} class="peer hidden" />
-								<label
+								<input type="hidden" id={weather.text} name={weather.text} bind:value={weather.id} />
+
+								<ButtonToggleGroup onSelect={handleSingleSelect} class="buttons">
+								<ButtonToggle 
 									for={weather.text}
-									class="m-2 rounded border-2 border-gray-400 bg-gray-100 px-2 py-2 font-semibold text-gray-800 shadow peer-checked:border-emerald-500 hover:border-emerald-500 hover:bg-emerald-200 hover:text-emerald-500"
+									color={weather.color} 
+									id={weather.text} 
+									selected={weather.text === weather.text}
 								>
 									{weather.text}
-								</label>
+								</ButtonToggle>
+								</ButtonToggleGroup>
 							</div>
 						{/each}
 					</div>
@@ -64,11 +76,6 @@
 						>
 							Show locations
 						</button>
-					</div>
-
-					<div>
-						<span>Current location: </span>
-						<input name="location" class="m-2" bind:value={location} />
 					</div>
 				</form>
 			</div>

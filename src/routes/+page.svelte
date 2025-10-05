@@ -69,29 +69,29 @@
 		</div>
 	</div>
 {:else}
-	<div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
+	<div class="flex h-full w-full flex-col items-center justify-center ext-center">
 		{#each form.ranked_cities as city (city)}
 			<div
-				class="mb-5 flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 rounded-sm border-2 border-solid border-black p-5 text-center md:mx-30"
+				class="mb-5 flex h-1/4 w-1/2 flex-col items-center justify-center gap-4 rounded-sm border-2 border-solid border-black p-5 text-center md:mx-30"
 			>
 				<div class="flex w-[75%] flex-row justify-center">
 					<p class="font-medium">
 						{city[0]}
 					</p>
 				</div>
-				<div class="flex w-[75%] flex-row justify-center gap-12">
+				<div class="flex w-[75%] flex-row justify-center gap-10">
 					<p>Cloudiness:</p>
 					<p class="font-medium">
 						{city[1].toFixed(2)}%
 					</p>
 				</div>
-				<div class="flex w-[75%] flex-row justify-center gap-12">
+				<div class="flex w-[75%] flex-row justify-center gap-10">
 					<p>Total precipitation:</p>
 					<p class="font-medium">
 						{city[2].toFixed(2)}mm/day
 					</p>
 				</div>
-				<div class="flex w-[75%] flex-row justify-center gap-12">
+				<div class="flex w-[75%] flex-row justify-center gap-10">
 					<p>Temperature:</p>
 					<p class="font-medium">
 						{city[3].toFixed(2)}°C

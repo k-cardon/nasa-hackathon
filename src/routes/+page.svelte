@@ -15,10 +15,6 @@
 	<div
 		class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg border-2 border-solid border-black"
 	>
-		<p class="mx-30 my-5 rounded-sm border-2 border-solid border-black px-10 text-center">
-			<!--Perhaps we could come up with a name for our app? In the theme of "Where Can/Shall I Go?" -->
-			Some URL ourwebsite.com/somewebsite
-		</p>
 		<p class="mr-30 text-right">our mission</p>
 		<div class="mx-30 mb-5 rounded-sm border-2 border-solid border-black">
 			<h1 class="flex justify-center pt-3 text-center text-3xl">Welcome</h1>

@@ -3,6 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 body {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Rubik';
+	font-weight: bolder;
 	height: 100vh;
 }

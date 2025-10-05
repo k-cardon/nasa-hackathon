@@ -1,4 +1,4 @@
-export async function calculate_average(date: string, weather_data: any) {
+export async function calculate_average(date: string, weather_data: any, location_name: string) {
 	//PLACEHOLDER VARIABLES
 	//To be passed by the form/DOM to find which stat is requested
 	let search_month = date.slice(5, 7);
@@ -38,6 +38,7 @@ export async function calculate_average(date: string, weather_data: any) {
 	let vaild_entries = 0;
 
 	let avg_data = {
+		location: location_name,
 		CLOUD_AMT_DAY: 0,
 		PRECTOTCORR: 0,
 		T2M: 0

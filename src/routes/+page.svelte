@@ -1,16 +1,19 @@
-<script>
-	let location = 'Gothenburg';
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	let location = 'Stockholm';
 	let weatherOptions = [
 		{ id: 1, text: 'Sunny' },
 		{ id: 2, text: 'Cloudy' },
-		{ id: 3, text: 'Rainy' },
-		{ id: 4, text: 'Snowy' }
+		{ id: 3, text: 'Rainy' }
 	];
 	let preferredWeather = $state('');
+
+	//let { data, form }: PageProps = $props();
 	//let placesOfInterest = $state('');
 	//let date = $state('');
 </script>
-
+{#if }
 <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
 	<div
 		class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg border-2 border-solid border-black"
@@ -37,7 +40,7 @@
 				<div>
 					<label for="date">
 						<p>When would you like to go?</p>
-						<input class="w-1/3 rounded" type="date" name="date" />
+						<input class="w-1/3 rounded" type="date" name="date" required />
 					</label>
 				</div>
 
@@ -48,7 +51,7 @@
 							class="w-1/3 rounded"
 							name="preferred-locations"
 							type="text"
-							placeholder="Parks, concert venues..."
+							placeholder="Gothenburg, Malmo..."
 						/>
 					</label>
 				</div>

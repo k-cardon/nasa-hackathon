@@ -1,7 +1,8 @@
 import { get_weather_data } from '$lib/server/weather_data';
+import { calculate_average } from '$lib/server/get_stats';
 
 const locationCoordinates: number[] = [57.7089, 11.9746];
-const params: string = 'PRECSNO,PRECTOTCORR,PSH,WS50M_RANGE,T2M,CLOUD_AMT_DAY';
+const params: string = 'PRECTOTCORR,T2M,CLOUD_AMT_DAY';
 const parks: number[][] = [
 	[57.684829, 11.943666],
 	[57.695071, 11.983655],
@@ -25,8 +26,10 @@ export const actions = {
 		const cloudy = form_data.get('Cloudy');
 		const windy = form_data.get('Windy');
 		const preferred_locations = form_data.get('preferred-locations');
+		const date = form_data.get('date');
 
-		console.log(await get_weather_data(location_request_url));
+		const weather_data = await get_weather_data(location_request_url);
 		console.log(location, sunny, rainy, cloudy, windy, preferred_locations);
+		await calculate_average(date, weather_data);
 	}
 };

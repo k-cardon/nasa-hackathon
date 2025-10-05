@@ -1,5 +1,5 @@
 # PlanMyWeather
-https://nasa-hackathon-git-main-kristen-cardons-projects.vercel.app?_vercel_share=u13xX4lGuer5TaxJzoq4pzanzNt5EHB2
+https://nasa-hackathon-hazel.vercel.app/
 
 Weather-based planning for your adventures!
 

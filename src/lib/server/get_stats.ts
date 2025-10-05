@@ -32,7 +32,7 @@ export async function calculate_average(date: string, weather_data: any) {
     //let [search_month, search_stat] = get_search_strings(entered_month, entered_stat);
     //console.log(search_month, search_stat);
 
-    function calc_avg(stat, entries) {
+    function calc_avg(stat:number, entries:number) {
         console.log(stat/entries)
         return stat/entries
     }

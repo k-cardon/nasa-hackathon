@@ -14,7 +14,7 @@
 	//let date = $state('');
 </script>
 
-{#if form?.success}
+{#if !form?.success}
 	<div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
 		<div
 			class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg border-2 border-solid border-black"

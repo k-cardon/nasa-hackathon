@@ -1,4 +1,5 @@
 # PlanMyWeather
+https://nasa-hackathon-git-main-kristen-cardons-projects.vercel.app?_vercel_share=u13xX4lGuer5TaxJzoq4pzanzNt5EHB2
 
 Weather-based planning for your adventures!
 
@@ -15,4 +16,4 @@ We created a simple web app developed using frameworks and languages such as Sve
 
 ## Is this 'vibe-coded'?
 
-We used AI (ChatGPT) to create an early mock-up of the web app. No code or assets from the AI was used in the final product. 
+We used AI (ChatGPT) to create an early mock-up of the web app. No code or assets from the AI was used in the final product.

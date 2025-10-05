@@ -51,7 +51,7 @@
 								class="w-5/6 rounded"
 								name="preferred-locations"
 								type="text"
-								placeholder="Currently supported locations: Gothenburg, Malmö, Stockholm"
+								placeholder="Currently supported locations: Gothenburg, Malmo, Stockholm"
 							/>
 						</label>
 					</div>

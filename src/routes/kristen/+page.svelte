@@ -10,6 +10,7 @@
 	//let placesOfInterest = $state('');
 	//let date = $state('');
     let showResult = $state(false);
+    let searchAgain = $state(false);
     
     /**
 	 * @param {{ preventDefault: () => void; }} event
@@ -18,10 +19,18 @@
         event.preventDefault();
         showResult = true;
     }
+    /**
+	 * @param {{ preventDefault: () => void; }} event
+	 */
+    function handleSearchAgain(event) {
+        event.preventDefault();
+        searchAgain = true;
+        showResult = false;
+    }
 </script>
 
 <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
-	{#if !showResult} 
+	{#if !showResult || searchAgain} 
 
     <div
 		class="align-center flex md:h-[75%] md:w-[60%] flex-col justify-center rounded-lg"
@@ -81,6 +90,15 @@
 		</div>   
     </div>
     {:else}
-        <p>Result</p>
+         <p>Best match</p>
+            <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">
+            </div>
+        <p>Alternative locations</p>
+            <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">
+            </div>
+        <p>Worst</p>
+            <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">
+            </div>
+        <button type="submit" onclick={handleSearchAgain}>Search again?</button>
     {/if}
 </div>

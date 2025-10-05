@@ -1,12 +1,12 @@
+<!-- --
 <script>
-  // --- LOCATION (Gothenburg) ---
+
   const user = {
     city: 'Gothenburg',
     lat: 57.7089,
     lon: 11.9746
   };
 
-  // --- FILTERS ---
   let allFilters = ['Parks', 'Viewpoint', 'Waterfront', 'Playground', 'Historic'];
   let selectedFilters = ['Parks', 'Viewpoint'];
   let showAddMenu = false;
@@ -137,7 +137,6 @@
   }
 </script>
 
-<!-- TOP BAR -->
 <div class="max-w-3xl mx-auto mt-6">
   <div class="rounded-2xl border bg-white/70 backdrop-blur-md shadow-sm p-4">
     <div class="flex items-center gap-2 mb-2">
@@ -145,7 +144,6 @@
       <div class="font-semibold">Filters</div>
     </div>
 
-    <!-- Selected chips -->
     <div class="flex flex-wrap gap-2">
       {#if selectedFilters.length === 0}
         <span class="text-sm text-gray-500">No filters selected</span>
@@ -160,7 +158,6 @@
         </button>
       {/each}
 
-      <!-- Add button + popover -->
       <div class="relative">
         <button
           class="inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-blue-50 hover:bg-blue-100 text-blue-700 shadow-sm"
@@ -188,10 +185,8 @@
   </div>
 </div>
 
-<!-- RESULTS -->
 <div class="max-w-3xl mx-auto mt-6 space-y-5">
 
-  <!-- BEST -->
   <section class="rounded-3xl border bg-white/80 backdrop-blur-md shadow p-5">
     <div class="flex items-center justify-between mb-3">
       <h2 class="text-lg font-semibold">Best</h2>
@@ -214,7 +209,6 @@
           </div>
         </div>
 
-        <!-- Metrics row -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
           <div class="rounded-xl border bg-white p-3 shadow-sm">
             <div class="text-sm text-gray-500">☀️ Sun</div>
@@ -239,7 +233,6 @@
     {/if}
   </section>
 
-  <!-- ALTERNATIVES -->
   <section class="rounded-3xl border bg-white/80 backdrop-blur-md shadow p-5">
     <h2 class="text-lg font-semibold mb-3">Alternative locations</h2>
     {#if alternatives.length > 0}
@@ -267,7 +260,6 @@
     {/if}
   </section>
 
-  <!-- WORST -->
   <section class="rounded-3xl border bg-white/80 backdrop-blur-md shadow p-5">
     <h2 class="text-lg font-semibold mb-3">Worst</h2>
     {#if worst.length > 0}
@@ -305,3 +297,4 @@
       radial-gradient(700px 400px at 50% 100%, #dcfce755, transparent);
   }
 </style>
+-->

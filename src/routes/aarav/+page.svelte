@@ -1,3 +1,4 @@
+<!-- --
 <script lang="ts">
   import { Alert, Button, Dropdown, DropdownItem, DropdownGroup, DropdownHeader, Card } from "flowbite-svelte";
   import { blur } from "svelte/transition"
@@ -11,7 +12,7 @@
   function handleSingleSelect(value: string | null) {
     weather = value;
     console.log("Weather:", value);
-    
+
   }
 </script>
 
@@ -53,8 +54,7 @@
   <h5 class="text">What weather are you looking for today?</h5>
 
   <div class="card">
-  
-  <!-- Weather buttons -->
+
   <form method="POST">
     <input type="hidden" name="chosenWeather" bind:value={weather} />
 
@@ -70,7 +70,7 @@
       <DropdownHeader>
         <span class="block truncate text-sm font-medium">More locations coming soon!</span>
       </DropdownHeader>
-      
+
       <DropdownGroup>
         <DropdownItem>Gothenburg</DropdownItem>
         <DropdownItem>Stockholm</DropdownItem>
@@ -83,3 +83,4 @@
   </form>
   </div>
 </Card>
+-->

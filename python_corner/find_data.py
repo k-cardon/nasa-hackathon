@@ -1,7 +1,11 @@
 import csv
+import math
 
-search_lat = 57.7089
-search_lon = 11.9746
+search_lat = 48.1372
+search_lon = 11.5756
+R = 6371
+
+
 
 with open('python_corner/latitude.csv') as file:
     latitude_map = csv.reader(file, delimiter=' ', quotechar='|')
@@ -11,16 +15,51 @@ with open('python_corner/longitude.csv') as file2:
     longitude_map = csv.reader(file2, delimiter=' ', quotechar='|')
     longitude_map = list(longitude_map)
 
-print(latitude_map[200])
 
 for i in range(0, len(latitude_map)):
     latitude_map[i] = latitude_map[i][0].split(',')
-    latitude_map.pop()
-    print(i)
+    latitude_map[i].pop()
     
-print(latitude_map[5][30])
+for i in range(0, len(longitude_map)):
+    longitude_map[i] = longitude_map[i][0].split(',')
+    longitude_map[i].pop()
 
-    
+def check_distance(search_lat, search_lon, compare_lat, compare_lon):
+
+    search_lat_rad = math.radians(search_lat)
+    search_lon_rad = math.radians(search_lon)
+
+    compare_lat = math.radians(compare_lat)
+    compare_lon = math.radians(compare_lon)
+
+    dlat = compare_lat - search_lat_rad
+    dlon = compare_lon - search_lon_rad
+
+    a = (math.sin(dlat / 2)**2 +
+         math.cos(search_lat_rad) * math.cos(compare_lat) *
+         math.sin(dlon / 2)**2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    distance = R * c
+    return distance
+
+smallest_distance = 100000
+smallest_distance_coords = (0,0)
+for i in range(0, len(latitude_map)):
+    for j in range(0, len(latitude_map[i])):
+        curr_dist = check_distance(search_lat, search_lon, float(latitude_map[i][j]), float(longitude_map[i][j]))
+        if curr_dist < smallest_distance:
+            smallest_distance = curr_dist
+            smallest_distance_coords = (i, j)
+
+
+print(f"Smallest distance: {smallest_distance} to coords located at {smallest_distance_coords}")
+#print(check_distance(search_lat, search_lon, compare_lat, compare_lon))
+
+#print(f"radified search coords: LAT: {search_lat_rad} LON: {search_lon_rad}")
+#print(f"radified compare coords: LAT: {compare_lat}) LON: {compare_lon}")
+
+
 #closest_lat_row = []
 #closest_hit_lat = (0,0)
 #smallest_diff_lat = 99999

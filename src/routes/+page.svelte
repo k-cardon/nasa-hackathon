@@ -1,10 +1,13 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import { ButtonToggle, ButtonToggleGroup } from 'flowbite-svelte';
+	import { ButtonToggle, ButtonToggleGroup, Alert } from "flowbite-svelte";
+	import { blur } from "svelte/transition"
+	import { cubicInOut } from "svelte/easing";
+	import { InfoCircleSolid } from "flowbite-svelte-icons";
 
 	let location = 'Stockholm';
 	let weatherOptions = [
-		{ id: 1, text: 'Sunny', color: "yellow"},
+		{ id: 1, text: 'Sunny', color: "yellow" },
 		{ id: 2, text: 'Cloudy', color: "blue" },
 		{ id: 3, text: 'Rainy', color: "indigo" }
 	];
@@ -18,12 +21,25 @@
 	//let date = $state('');
 
 	function handleSingleSelect(value: string | null) {
-		weather = value;
+		chosenWeather = value
 		console.log("Weather:", value);
   }
 </script>
 
 {#if !form?.success}
+	<Alert
+	color="amber"
+	border
+	dismissable
+	transition={blur}
+	params={{duration:200,easing:cubicInOut}}
+	>
+	{#snippet icon()}
+		<InfoCircleSolid class="h-5 w-5" />
+	{/snippet}
+	Under maintenance! This is a demo of PlanMyWeather
+	</Alert>
+
 	<div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
 		<div
 			class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg"
@@ -33,22 +49,26 @@
 				<form method="POST" class="flex flex-col gap-3">
 					<p class="mx-5">What weather are you looking for today?</p>
 					<div class="flex flex-row justify-center">
-						{#each weatherOptions as weather (weather.id)}
 							<div class="flex flex-row">
-								<input type="hidden" id={weather.text} name={weather.text} bind:value={weather.id} />
+								{#each weatherOptions as weatherOptions (weatherOptions)}
+	
+								<input type="hidden" id={weatherOptions.text} name={weatherOptions.text} bind:value={weatherOptions.id} />
+								<ButtonToggleGroup>
 
-								<ButtonToggleGroup onSelect={handleSingleSelect} class="buttons">
-								<ButtonToggle 
-									for={weather.text}
-									color={weather.color} 
-									id={weather.text} 
-									selected={weather.text === weather.text}
+								<ButtonToggle
+									color={weatherOptions.color} 
+									id={weatherOptions.id} 
+									selected={weatherOptions === weatherOptions}
+									onSelect={handleSingleSelect}
 								>
-									{weather.text}
+									{weatherOptions.text}
 								</ButtonToggle>
+
+								
+
 								</ButtonToggleGroup>
+								{/each}
 							</div>
-						{/each}
 					</div>
 
 					<div>
@@ -83,6 +103,19 @@
 		</div>
 	</div>
 {:else}
+	<Alert
+		color="amber"
+		border
+		transition={blur}
+		params={{duration:200,easing:cubicInOut}}
+	>
+
+	{#snippet icon()}
+		<InfoCircleSolid class="h-5 w-5" />
+	{/snippet}
+	Under maintenance! This is a demo of PlanMyWeather!
+	</Alert>
+
         <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
                 {#each form.ranked_cities as city (city)}
                         <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">

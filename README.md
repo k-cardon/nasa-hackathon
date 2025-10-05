@@ -1,38 +1,18 @@
-# sv
+# PlanMyWeather
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Weather-based planning for your adventures!
 
-## Creating a project
+## A NASA Space Apps Challenger
 
-If you're seeing this, you've probably already done this step. Congrats!
+PlanMyWeather uses historical weather data from NASA's POWER API to let users make smart travels plan based on a *prediction* of the weather at the destination
 
-```sh
-# create a new project in the current directory
-npx sv create
 
-# create a new project in my-app
-npx sv create my-app
-```
+## What is it, techincally?
 
-## Developing
+We created a simple web app developed using frameworks and languages such as Svelte, TypeScript and TailwindCSS.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+*CURRENT LOCATIONS available in the App are Gothenburg, Malmö and Stockholm. Plans are to enable the search of any location and return local points of interest.*
 
-```sh
-npm run dev
+## Is this 'vibe-coded'?
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+We used AI (ChatGPT) to create an early mock-up of the web app. No code or assets from the AI was used in the final product. 

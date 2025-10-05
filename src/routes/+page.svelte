@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { PageProps } from './$types';
 
 	let location = 'Stockholm';
 	let weatherOptions = [
@@ -9,7 +9,7 @@
 	];
 	let preferredWeather = $state('');
 
-	let { data, form }: PageProps = $props();
+	let { form }: PageProps = $props();
 	//let placesOfInterest = $state('');
 	//let date = $state('');
 </script>
@@ -74,6 +74,10 @@
 			</div>
 		</div>
 	</div>
+{:else}
+	{#each form.ranked_cities as city (city)}
+		<p>{city[0]} {city[1]} {city[2]}</p>
+	{/each}
 {/if}
 
 <style>

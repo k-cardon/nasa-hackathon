@@ -13,7 +13,7 @@
 
 <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
 	<div
-		class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg border-2 border-solid border-black"
+		class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg"
 	>
 		<p class="mr-30 text-right">our mission</p>
 		<div class="mx-30 mb-5 rounded-sm border-2 border-solid border-black">

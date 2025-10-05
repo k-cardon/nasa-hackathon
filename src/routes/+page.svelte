@@ -58,10 +58,10 @@
 
 					<div>
 						<button
-							class="m-4 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 p-2 pb-4 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
+							class="m-4 p-2 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
 							type="submit"
 						>
-							Show locations <br>(Allow upto 60 seconds for a redirect)
+							Show locations <br>(Allow up to 60 seconds for a redirect)
 						</button>
 					</div>
 				</form>

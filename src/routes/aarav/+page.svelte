@@ -1,150 +1,85 @@
-<script>
-  import { fly, fade } from "svelte/transition";
-  import { cubicOut } from "svelte/easing";
-  import { onMount } from "svelte";
-  import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader, DropdownGroup } from "flowbite-svelte";
-  import { ChevronDownOutline } from "flowbite-svelte-icons";
+<script lang="ts">
+  import { Alert, Button, Dropdown, DropdownItem, DropdownGroup, DropdownHeader, Card } from "flowbite-svelte";
+  import { blur } from "svelte/transition"
+  import { ChevronDownOutline, InfoCircleSolid } from "flowbite-svelte-icons";
+	import { cubicInOut } from "svelte/easing";
 
-  let showPopup = true;
-  let selectedWeather = null;
-  let flyIcon = false;
+  import { ButtonToggleGroup, ButtonToggle } from "flowbite-svelte";
 
-  const weatherOptions = ["Sunny", "Cloudy", "Windy", "Snowy"];
+  let weather = ""; // track selected option
 
-  function toggleWeather(option) {
-    selectedWeather = selectedWeather === option ? null : option;
-  }
-
-  function handleShowLocations() {
-    flyIcon = true;
-    // wait for icon animation before closing popup
-    setTimeout(() => {
-      showPopup = false;
-    }, 600);
+  function handleSingleSelect(value: string | null) {
+    weather = value;
+    console.log("Weather:", value);
+    
   }
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
-
-  * {
-    font-family: 'Rubik', sans-serif;
+  .text {
+    margin: auto;
+    padding-bottom: 5%;
+    font-family: "Rubik";
+    font-weight: bolder;
+    font-size: larger;
   }
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center; /* horizontal */
-    align-items: center;     /* vertical */
-    background: rgba(0,0,0,0); /* optional dark backdrop */
-    z-index: 1000;
-    }
-
-  .popup {
-    position: relative;
-    max-width: 600px;
-    margin: 0px auto;
-    padding: 20px 20px;
-    border-radius: 1rem;
-    background: white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    text-align: center;
+  .card {
+    padding: 50px, 50px, 50px, 50px;
+    margin: auto;
   }
 
-  .weather-btns {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
+  .clearup {
+    display: block;
+    clear:both;
   }
 
-  .weather-btn {
-    padding: 0.6rem 1.2rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background: #ddd;
-    color: #222;
-  }
-
-  .weather-btn.active {
-    background: #6fcf97;
-    color: white;
-  }
-
-  .show-btn {
-    margin-top: 1rem;
-    padding: 0.8rem 1.5rem;
-    background: #4da6ff;
-    border: none;
-    border-radius: 0.6rem;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-
-  .show-btn:hover {
-    background: #3385e6;
-  }
-
-  .info-icon {
-    position: absolute;
-    top: 0.8rem;
-    right: 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .location {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-  }
 </style>
 
-{#if showPopup}
-    <div class="overlay">
-        <div class="popup" transition:fly={{ y: 50, duration: 400, easing: cubicOut }}>
-            <div class="info-icon"
-            transition:fly|local={{ y: flyIcon ? -200 : 0, duration: 600, easing: cubicOut }}>
-            ⓘ
-            </div>
+<Alert
+  color="amber"
+  border
+  dismissable
+  transition={blur}
+  params={{duration:500,easing:cubicInOut}}
+>
+  {#snippet icon()}
+    <InfoCircleSolid class="h-5 w-5" />
+  {/snippet}
+  Under maintenance! This is just a demo of "PlanMyWeather"
+</Alert>
 
-    <h2>Welcome</h2>
-    <p>What weather are you looking for today?</p>
+<Card size="lg" class="">
+  <h5 class="text">What weather are you looking for today?</h5>
 
-    <div class="weather-btns">
-      {#each weatherOptions as option}
-        <button
-          class="weather-btn {selectedWeather === option ? 'active' : ''}"
-          on:click={() => toggleWeather(option)}
-          transition:fade>
-          {option}
-        </button>
-      {/each}
-    </div>
+  <div class="card">
+  
+  <!-- Weather buttons -->
+  <form method="POST">
+    <input type="hidden" name="chosenWeather" bind:value={weather} />
 
-    <button class="show-btn" on:click={handleShowLocations}>
-      Show locations
-    </button>
+    <ButtonToggleGroup onSelect={handleSingleSelect}>
+      <ButtonToggle color="yellow" value="Sunny" selected={weather === "Sunny"}>Sunny</ButtonToggle>
+      <ButtonToggle color="sky" value="Rainy" selected={weather === "Rainy"}>Rainy</ButtonToggle>
+      <ButtonToggle color="indigo" value="Cloudy" selected={weather === "Cloudy"}>Cloudy</ButtonToggle>
+    </ButtonToggleGroup>
 
-    <div class="location">
-    <Button>Dropdown button<ChevronDownOutline class="ms-2 h-6 w-6 text-white dark:text-white" /></Button>
+    <Button class="button">Location</Button>
+
+    <Dropdown>
       <DropdownHeader>
-        <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-        <span class="block truncate text-sm font-medium">name@flowbite.com</span>
+        <span class="block truncate text-sm font-medium">More locations coming soon!</span>
       </DropdownHeader>
+      
       <DropdownGroup>
         <DropdownItem>Gothenburg</DropdownItem>
-        <DropdownItem>Coming soon...</DropdownItem>
+        <DropdownItem>Stockholm</DropdownItem>
+        <DropdownItem>Malmö</DropdownItem>
       </DropdownGroup>
-    </div>
+    </Dropdown>
+
+    <Button type="submit" color="blue" class="">Show locations</Button>
+
+  </form>
   </div>
-  </div>
-{/if}
+</Card>

@@ -10,17 +10,15 @@
 	let preferredWeather = $state('');
 
 	let { form }: PageProps = $props();
-    let showResult = $state(false);
-    let searchAgain = $state(false);
+	let showResult = $state(false);
+	let searchAgain = $state(false);
 	//let placesOfInterest = $state('');
 	//let date = $state('');
 </script>
 
 {#if !form?.success}
 	<div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
-		<div
-			class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg"
-		>
+		<div class="align-center flex h-[75%] w-[60%] flex-col justify-center rounded-lg">
 			<div class="mx-30 mb-5 rounded-sm border-2 border-solid border-black">
 				<h1 class="flex justify-center p-3 text-center text-3xl">Welcome</h1>
 				<form method="POST" class="flex flex-col gap-3">
@@ -60,7 +58,7 @@
 
 					<div>
 						<button
-							class="m-4 pb-4 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 p-2 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
+							class="m-4 w-1/2 rounded border-2 border-solid border-sky-300 bg-sky-200 p-2 pb-4 text-lg font-semibold text-sky-800 shadow hover:bg-sky-300"
 							type="submit"
 						>
 							Show locations
@@ -71,13 +69,38 @@
 		</div>
 	</div>
 {:else}
-        <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
-                {#each form.ranked_cities as city (city)}
-                        <div class="flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 p-5 text-center md:mx-30 mb-5 rounded-sm border-2 border-solid border-black">
-                <p>{city[0]} {city[1]} {city[2]}</p></div>
-            {/each}
-            <a href="/">Search again?</a>
-        </div>
+	<div class="flex h-full w-full flex-col items-center justify-center gap-4 p-5 text-center">
+		{#each form.ranked_cities as city (city)}
+			<div
+				class="mb-5 flex h-1/3 w-1/2 flex-col items-center justify-center gap-4 rounded-sm border-2 border-solid border-black p-5 text-center md:mx-30"
+			>
+				<div class="flex w-[75%] flex-row justify-center">
+					<p class="font-medium">
+						{city[0]}
+					</p>
+				</div>
+				<div class="flex w-[75%] flex-row justify-center gap-12">
+					<p>Cloudiness:</p>
+					<p class="font-medium">
+						{city[1].toFixed(2)}%
+					</p>
+				</div>
+				<div class="flex w-[75%] flex-row justify-center gap-12">
+					<p>Total precipitation:</p>
+					<p class="font-medium">
+						{city[2].toFixed(2)}mm/day
+					</p>
+				</div>
+				<div class="flex w-[75%] flex-row justify-center gap-12">
+					<p>Temperature:</p>
+					<p class="font-medium">
+						{city[3].toFixed(2)}°C
+					</p>
+				</div>
+			</div>
+		{/each}
+		<a href="/">Search again?</a>
+	</div>
 {/if}
 
 <style>
